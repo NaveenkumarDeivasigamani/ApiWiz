@@ -1,0 +1,7 @@
+Starting workflow from root: Node-1
+Executing node: Node-1
+Executing node: Node-2
+Executing node: Node-3
+Executing node: Node-4
+Executing node: Node-5
+Total nodes executed: 5

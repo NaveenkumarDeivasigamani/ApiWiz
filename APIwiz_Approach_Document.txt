@@ -1,0 +1,31 @@
+Approach Document
+
+Problem Statement:
+Traverse a directed workflow graph where each node can only execute after all parent nodes are done. 
+Children can be executed in parallel. The goal is to print node names in execution order and count the total executed nodes.
+
+Approach:
+- Parsed the input to create a map of node IDs to names.
+- Built a graph using an adjacency list and tracked the indegree of each node (number of parent nodes).
+- Used a set to keep track of visited (executed) nodes.
+- Started with the root node (ID 1), and used Python threads to simulate parallel execution of children.
+- A lock (threading.Lock) ensures shared data like visited and indegree are updated safely.
+- Nodes only execute once their indegree reaches zero.
+- After execution, children are triggered if they are ready.
+
+Tools/Libraries Used:
+- Python 3
+- threading – to simulate parallel execution
+- collections.defaultdict – for storing the graph and indegrees
+
+Assumptions:
+- Node 1 is always the starting/root node.
+- The graph is valid (no cycles).
+- All inputs are formatted correctly.
+- Output order may vary slightly due to parallel execution.
+
+Design Choices:
+- Used threads instead of async/multiprocessing for simplicity.
+- Manually handled locks to prevent race conditions.
+- Added debug-style print statements for visibility.
+- Avoided too much abstraction to keep the code easy to understand and test.
